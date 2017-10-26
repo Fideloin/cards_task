@@ -1,0 +1,30 @@
+{% extends "base_generic.html" %}
+{% block title %}<title>Регистрация</title>{% endblock %}
+
+{% block content %}
+<h3>Придумайте логин и пароль</h3>
+{% if form.non_field_errors %}
+    {{ form.non_field_errors }}
+{% endif %}
+<form class="form-group-lg" method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div>
+        <label for="id_username">Имя пользователя:</label>
+        {{ form.username}}
+        {{ form.username.errors }}
+    </div>
+    <div>
+        <label for="id_password1">Пароль:</label>
+        {{ form.password1 }}
+        {{ form.password1.errors }}
+    </div>
+    <div>
+        <label for="id_password2">Повторите пароль:</label>
+        {{ form.password2 }}
+        {{ form.password2.errors }}
+    </div>
+    <br>
+    <input class="btn btn-primary btn-lg" name="submit" type="submit" value="Зарегистрироваться" />
+</form>
+{% endblock %}

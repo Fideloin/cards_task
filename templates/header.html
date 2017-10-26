@@ -1,0 +1,30 @@
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">IChat</a>
+        </div>
+    {% if user.is_authenticated %}<div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li><a href="{% url 'inbox' %}">Входящие</a></li>
+            <li><a href="{% url 'sent' %}">Исходящие</a></li>
+            <li><a href="{% url 'new_letter' %}">Написать письмо</a></li>
+            <li><a href="{% url 'users' %}">Пользователи сайта</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>Здравствуйте, {{ user.username }}<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{% url 'logout' %}">Выход</a></li>
+                </ul>
+            </li>
+        </ul>
+    {% endif %}
+    </div>
+  </div>
+</nav>

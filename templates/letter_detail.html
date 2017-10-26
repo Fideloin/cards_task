@@ -1,0 +1,26 @@
+{% extends "base_generic.html" %}
+{% block title %}<title>Письмо от {{letter.author}} к {{letter.to}}</title>{% endblock %}
+
+
+{% block content %}
+<h4>Письмо от {{letter.author}} к {{letter.to}}</h4>
+    <ul>
+        <li>
+            От: {{letter.author}}
+        </li>
+        <li>
+            Кому: {{letter.to}}
+        </li>
+        <li>
+            Время получения: {{letter.pub_date}}
+        </li>
+        <li>
+            Тема письма: {{letter.theme }}
+        </li>
+        <li>
+            Содержание: <hr/>
+            {{letter.letter_body}}
+        </li>
+    </ul>
+
+{% endblock %}

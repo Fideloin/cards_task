@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+{% block title %}<title>Войти</title>{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    <p align="center">Вы вошли под именем {{ user.username }}. <a href="{% url 'logout' %}">Выйти?</a></p><br/><br/>
+{% else %}
+    <form method="post" action="{% url 'login' %}">
+        <div class="container">
+            {% csrf_token %}
+            <h3>Авторизуйтесь со своим логином и паролем</h3>
+            <div class="form-group-lg">{{form.as_p}}</div>
+            <div>
+                <input class="btn btn-primary btn-lg" type="submit" value="Войти" />
+                <input type="hidden" name="next" value="{{ next }}" />
+            </div>
+        </div>
+    </form>
+{% endif %}
+{% endblock %}

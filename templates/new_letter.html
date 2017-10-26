@@ -1,0 +1,32 @@
+{% extends "base_generic.html" %}
+{% block title %}<title>Новое письмо</title>{% endblock %}
+
+{% block content %}
+<h3 class="text-center">Новое письмо</h3>
+<div class="container">
+        {% if form.non_field_errors %}
+        {{ form.non_field_errors }}
+        {% endif %}
+    <form class="form-group-sm" method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div>
+            <label for="id_to">Имя пользователя:</label>
+            {{ form.to.errors }}
+            {{ form.to}}
+        </div>
+        <div>
+            <label for="id_theme">Тема сообщения:</label>
+            {{ form.theme.errors }}
+            {{ form.theme }}
+        </div>
+        <div>
+            <label for="id_letter_body">Содержание сообщения:</label>
+            {{ form.letter_body.errors }}
+            {{ form.letter_body }}
+        </div>
+        <hr>
+        <input class="btn btn-primary form-control" name="submit" type="submit" value="Отправить" />
+    </form>
+</div>
+{% endblock %}

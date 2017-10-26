@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+{% block title %}<title>Пользователи</title>{% endblock %}
+
+{% block content %}
+    <h3 class="text-center">Все пользователи, зарегистрированные на сайте</h3>
+    <p class="text-center">Вы сможете выбрать пользователя в форме отправки письма</p>
+    <ul>
+        {% for user in user_list %}
+        <li>
+            {{ user.username }}
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

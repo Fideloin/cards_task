@@ -1,0 +1,26 @@
+{% extends "base_generic.html" %}
+{% block title %}<title>Исходящие</title>{% endblock %}
+
+{% block content %}
+    <h3 class="text-center">Отправленные</h3>
+    {% if letters %}
+    <table class="table table-hover">
+        <thead>
+            <td>Тема сообщения</td>
+            <td>Отправлено</td>
+            <td>Время отправления</td>
+        </thead>
+
+    {% for letter in letters %}
+        <tr>
+            <td><a href="{{ letter.get_absolute_url }}">{{ letter.theme }}</a></td>
+            <td>{{letter.to}}</td>
+            <td>{{letter.pub_date}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+    {% else %}
+        <h4 class="text-center">У вас нет отправленных писем. Напишите кому-нибудь! :)</h4>
+    {% endif %}
+
+{% endblock %}
